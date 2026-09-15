@@ -228,6 +228,12 @@ a { color: var(--accent); }
 
 .pane__hit:hover .pane__logo { transform: scale(1.06); }
 
+/* Retour tactile au clic : le logo s'enfonce brièvement */
+.pane__hit:active .pane__logo {
+  transform: scale(0.92);
+  transition-duration: 0.08s;
+}
+
 .pane__name {
   font-size: 1.5rem;
   letter-spacing: 0.12em;
@@ -271,6 +277,37 @@ html:has(#r-argo:checked)   .pane--argo   .pane__detail {
   visibility: visible;
   padding-bottom: 2.25rem;
 }
+
+/* Animation d'ouverture : le logo rebondit… */
+@keyframes logo-pop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.14) rotate(-3deg); }
+  70%  { transform: scale(0.96) rotate(1.5deg); }
+  100% { transform: scale(1); }
+}
+
+html:has(#r-helios:checked) .pane--helios .pane__logo,
+html:has(#r-fafnir:checked) .pane--fafnir .pane__logo,
+html:has(#r-argo:checked)   .pane--argo   .pane__logo {
+  animation: logo-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* …et le contenu du détail se révèle en cascade */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+html:has(#r-helios:checked) .pane--helios .pane__detail > *,
+html:has(#r-fafnir:checked) .pane--fafnir .pane__detail > *,
+html:has(#r-argo:checked)   .pane--argo   .pane__detail > * {
+  animation: rise-in 0.45s ease both;
+}
+
+html:has(input.app-radio:checked) .pane .pane__detail > :nth-child(1) { animation-delay: 0.18s; }
+html:has(input.app-radio:checked) .pane .pane__detail > :nth-child(2) { animation-delay: 0.26s; }
+html:has(input.app-radio:checked) .pane .pane__detail > :nth-child(3) { animation-delay: 0.34s; }
+html:has(input.app-radio:checked) .pane .pane__detail > :nth-child(4) { animation-delay: 0.42s; }
 
 /* Focus clavier : anneau sur le panneau correspondant */
 html:has(#r-helios:focus-visible) .pane--helios,
