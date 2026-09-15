@@ -1,0 +1,421 @@
+/* ==========================================================================
+   Thoth Technologies — triptyque à thèmes par application
+   Bascule de thème en CSS pur : radios + :has(), aucun JavaScript.
+   ========================================================================== */
+
+:root {
+  /* Thème par défaut : Thoth (anthracite, encre & papyrus) */
+  --bg: #14161d;
+  --ink: #ece7dd;
+  --ink-dim: #b3aea2;
+  --accent: #ece7dd;
+  --accent-contrast: #14161d;
+  --line: rgba(236, 231, 221, 0.16);
+  --theme-transition: 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Palettes fixes des applications (les panneaux les gardent en permanence) */
+  --helios-bg: #243443;
+  --helios-accent: #f4b83f;
+  --helios-ink: #f2ede1;
+  --helios-dim: #b9c2ca;
+  --fafnir-bg: #10151b;
+  --fafnir-accent: #e6952f;
+  --fafnir-ink: #efe8da;
+  --fafnir-dim: #a9a79f;
+  --argo-bg: #261609;
+  --argo-accent: #c99a3f;
+  --argo-ink: #efe4d0;
+  --argo-dim: #bcab90;
+}
+
+/* La page entière adopte le thème de l'application ouverte */
+html:has(#r-helios:checked) {
+  --bg: var(--helios-bg);
+  --ink: var(--helios-ink);
+  --ink-dim: var(--helios-dim);
+  --accent: var(--helios-accent);
+  --accent-contrast: var(--helios-bg);
+  --line: rgba(244, 184, 63, 0.28);
+}
+
+html:has(#r-fafnir:checked) {
+  --bg: var(--fafnir-bg);
+  --ink: var(--fafnir-ink);
+  --ink-dim: var(--fafnir-dim);
+  --accent: var(--fafnir-accent);
+  --accent-contrast: var(--fafnir-bg);
+  --line: rgba(230, 149, 47, 0.28);
+}
+
+html:has(#r-argo:checked) {
+  --bg: var(--argo-bg);
+  --ink: var(--argo-ink);
+  --ink-dim: var(--argo-dim);
+  --accent: var(--argo-accent);
+  --accent-contrast: var(--argo-bg);
+  --line: rgba(201, 154, 63, 0.3);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  transition: background var(--theme-transition), color var(--theme-transition);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main { flex: 1; }
+
+/* Radios masqués visuellement, focus clavier conservé */
+.app-radio {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+h1, h2, .brand__name, .pane__name {
+  font-family: "Marcellus", "Palatino Linotype", Palatino, serif;
+  font-weight: 400;
+}
+
+a { color: var(--accent); }
+
+/* ==========================================================================
+   En-tête
+   ========================================================================== */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.brand__name {
+  font-size: 0.95rem;
+  line-height: 1.15;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-header__contact {
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.site-header__contact:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  text-align: center;
+  padding: 2.5rem 0 2.25rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+
+.hero__title em {
+  font-style: normal;
+  color: var(--accent);
+  transition: color var(--theme-transition);
+}
+
+.hero__sub {
+  max-width: 34rem;
+  margin: 1.1rem auto 0;
+  color: var(--ink-dim);
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   Triptyque
+   ========================================================================== */
+
+.triptych {
+  display: flex;
+  gap: 1rem;
+  min-height: 30rem;
+  margin-bottom: 3rem;
+}
+
+.pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: flex-grow var(--theme-transition), border-color 0.3s;
+}
+
+/* Couleurs propres à chaque panneau, indépendantes du thème de page */
+.pane--helios { background: var(--helios-bg); color: var(--helios-ink); --pane-accent: var(--helios-accent); --pane-dim: var(--helios-dim); --pane-bg: var(--helios-bg); }
+.pane--fafnir { background: var(--fafnir-bg); color: var(--fafnir-ink); --pane-accent: var(--fafnir-accent); --pane-dim: var(--fafnir-dim); --pane-bg: var(--fafnir-bg); }
+.pane--argo   { background: var(--argo-bg);   color: var(--argo-ink);   --pane-accent: var(--argo-accent);   --pane-dim: var(--argo-dim);   --pane-bg: var(--argo-bg); }
+
+.pane:hover { border-color: var(--pane-accent); }
+
+/* Zone cliquable : logo + nom + badge */
+.pane__hit {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 2.25rem 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pane__logo {
+  width: clamp(84px, 9vw, 128px);
+  height: auto;
+  border-radius: 26%;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+  transition: transform 0.35s ease;
+}
+
+.pane__hit:hover .pane__logo { transform: scale(1.06); }
+
+.pane__name {
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+}
+
+.pane__badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pane-dim);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+}
+
+.pane__badge--live { color: var(--pane-accent); }
+
+/* Détail : replié par défaut, déployé quand le panneau est sélectionné */
+.pane__detail {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem);
+  transition: max-height var(--theme-transition), opacity 0.45s ease 0.15s,
+              visibility var(--theme-transition), padding var(--theme-transition);
+}
+
+html:has(#r-helios:checked) .pane--helios,
+html:has(#r-fafnir:checked) .pane--fafnir,
+html:has(#r-argo:checked)   .pane--argo {
+  flex-grow: 2.6;
+  border-color: var(--pane-accent);
+}
+
+html:has(#r-helios:checked) .pane--helios .pane__detail,
+html:has(#r-fafnir:checked) .pane--fafnir .pane__detail,
+html:has(#r-argo:checked)   .pane--argo   .pane__detail {
+  max-height: 32rem;
+  opacity: 1;
+  visibility: visible;
+  padding-bottom: 2.25rem;
+}
+
+/* Focus clavier : anneau sur le panneau correspondant */
+html:has(#r-helios:focus-visible) .pane--helios,
+html:has(#r-fafnir:focus-visible) .pane--fafnir,
+html:has(#r-argo:focus-visible)   .pane--argo {
+  outline: 2px solid var(--pane-accent);
+  outline-offset: 3px;
+}
+
+html:has(#r-thoth:focus-visible) .brand {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.pane__kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--pane-accent);
+}
+
+.pane__tagline {
+  margin: 0;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--pane-dim);
+}
+
+.pane__text {
+  margin: 1rem 0 0;
+}
+
+.pane__text strong { color: var(--pane-accent); }
+
+.pane__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.btn:hover { border-color: var(--pane-accent); color: var(--pane-accent); }
+
+.btn--primary {
+  background: var(--pane-accent);
+  border-color: var(--pane-accent);
+  color: var(--pane-bg);
+}
+
+.btn--primary:hover {
+  background: color-mix(in srgb, var(--pane-accent) 85%, white);
+  color: var(--pane-bg);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--pane-accent);
+  outline-offset: 3px;
+}
+
+.soon {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  color: var(--pane-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Pied de page
+   ========================================================================== */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+}
+
+.site-footer a { color: var(--ink-dim); }
+.site-footer a:hover { color: var(--accent); }
+
+/* ==========================================================================
+   Mobile : panneaux empilés en accordéon
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  .triptych {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .pane { flex: none; }
+
+  .pane__hit {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.1rem;
+    padding: 1.1rem 1.25rem;
+    text-align: left;
+  }
+
+  .pane__logo { width: 64px; }
+
+  .pane__name { flex: 1; font-size: 1.3rem; }
+}
+
+/* ==========================================================================
+   Dégradations
+   ========================================================================== */
+
+/* Navigateurs sans :has() : tous les détails visibles, thème Thoth fixe */
+@supports not (selector(html:has(input))) {
+  .pane__detail {
+    max-height: none;
+    opacity: 1;
+    visibility: visible;
+    padding-bottom: 2.25rem;
+  }
+
+  .triptych { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

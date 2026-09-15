@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thoth Technologies — Applications mobiles</title>
+  <meta name="description" content="Thoth Technologies conçoit des applications mobiles simples et soignées : Helios (permis de conduire), Fafnir (budget personnel) et Argo (covoiturage).">
+  <meta property="og:title" content="Thoth Technologies">
+  <meta property="og:description" content="Des mythes, mis en application. Helios, Fafnir, Argo.">
+  <meta property="og:image" content="assets/thoth_technologies.png">
+  <link rel="icon" type="image/png" href="assets/thoth_technologies.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Sélecteur d'univers : CSS pur, aucun JavaScript -->
+  <input class="app-radio" type="radio" name="app" id="r-thoth" checked>
+  <input class="app-radio" type="radio" name="app" id="r-helios">
+  <input class="app-radio" type="radio" name="app" id="r-fafnir">
+  <input class="app-radio" type="radio" name="app" id="r-argo">
+
+  <div class="page">
+
+    <header class="site-header">
+      <label for="r-thoth" class="brand" title="Revenir à l'accueil">
+        <img class="brand__ibis" src="assets/new_one.png" alt="" width="52" height="52">
+        <span class="brand__name">Thoth<br>Technologies</span>
+      </label>
+      <a class="site-header__contact" href="mailto:dev@thoth.fr">Contact</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Studio d'applications mobiles</p>
+        <h1 class="hero__title">Des mythes, <em>mis en application.</em></h1>
+        <p class="hero__sub">
+          Trois applications, trois usages du quotidien.
+          Chacune porte le nom d'un mythe — et s'attache à le mériter.
+        </p>
+      </section>
+
+      <section class="triptych" aria-label="Les applications">
+
+        <article class="pane pane--helios">
+          <label class="pane__hit" for="r-helios">
+            <img class="pane__logo" src="assets/helios.png" alt="" width="120" height="120">
+            <span class="pane__name">Helios</span>
+            <span class="pane__badge pane__badge--live">Disponible</span>
+          </label>
+          <div class="pane__detail">
+            <p class="pane__kicker">Permis de conduire</p>
+            <p class="pane__tagline">L'oral de l'examen pratique, maîtrisé.</p>
+            <p class="pane__text">
+              À la fin de l'examen pratique du permis, l'examinateur pose des questions de
+              vérification, de sécurité routière et de premiers secours : jusqu'à
+              <strong>3 points</strong> sur la note finale. Helios entraîne à toutes les
+              décrocher — 200 questions, corrections détaillées, suivi de progression.
+              Gratuit, sans inscription, fonctionne hors-ligne.
+            </p>
+            <div class="pane__actions">
+              <a class="btn btn--primary" href="https://helios.thoth.fr">Ouvrir Helios</a>
+              <a class="btn" href="https://play.google.com/store/apps/details?id=fr.thoth.helios">Google Play</a>
+              <a class="btn" href="https://apps.apple.com/fr/app/helios-driver/id6763942406">App Store</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pane pane--fafnir">
+          <label class="pane__hit" for="r-fafnir">
+            <img class="pane__logo" src="assets/fafnir.png" alt="" width="120" height="120">
+            <span class="pane__name">Fafnir</span>
+            <span class="pane__badge">Bientôt</span>
+          </label>
+          <div class="pane__detail">
+            <p class="pane__kicker">Budget personnel</p>
+            <p class="pane__tagline">Le dragon qui veille sur votre or.</p>
+            <p class="pane__text">
+              Fafnir sera un gestionnaire de budget personnel : dépenses suivies à la trace,
+              épargne surveillée d'un œil de dragon, comptes clairs à la fin du mois.
+            </p>
+            <div class="pane__actions">
+              <span class="soon">Bientôt disponible</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pane pane--argo">
+          <label class="pane__hit" for="r-argo">
+            <img class="pane__logo" src="assets/argo.png" alt="" width="120" height="120">
+            <span class="pane__name">Argo</span>
+            <span class="pane__badge">Bientôt</span>
+          </label>
+          <div class="pane__detail">
+            <p class="pane__kicker">Covoiturage</p>
+            <p class="pane__tagline">Une embarcation, plusieurs rameurs.</p>
+            <p class="pane__text">
+              Argo organisera le covoiturage entre amis, en famille — et pourquoi pas entre
+              collègues. Un équipage, un cap, des trajets partagés sans frictions.
+            </p>
+            <div class="pane__actions">
+              <span class="soon">Bientôt disponible</span>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img class="site-footer__ibis" src="assets/new_one.png" alt="" width="36" height="36">
+      <p>Thoth Technologies · © 2026 · <a href="mailto:dev@thoth.fr">dev@thoth.fr</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
