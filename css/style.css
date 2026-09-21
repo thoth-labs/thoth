@@ -63,6 +63,10 @@
   --argo-accent: #c99a3f;
   --argo-ink: #efe4d0;
   --argo-dim: #bcab90;
+  --sugar-bg: #1a3a2a;
+  --sugar-accent: #52b788;
+  --sugar-ink: #f0faf4;
+  --sugar-dim: #a3c9b1;
 }
 
 /* La page entière adopte le thème de l'application ouverte */
@@ -91,6 +95,15 @@ html:has(#r-argo:checked) {
   --accent: var(--argo-accent);
   --accent-contrast: var(--argo-bg);
   --line: rgba(201, 154, 63, 0.3);
+}
+
+html:has(#r-sugar:checked) {
+  --bg: var(--sugar-bg);
+  --ink: var(--sugar-ink);
+  --ink-dim: var(--sugar-dim);
+  --accent: var(--sugar-accent);
+  --accent-contrast: var(--sugar-bg);
+  --line: rgba(82, 183, 136, 0.3);
 }
 
 /* ==========================================================================
@@ -258,6 +271,7 @@ a { color: var(--accent); }
 .pane--helios { background: var(--helios-bg); color: var(--helios-ink); --pane-accent: var(--helios-accent); --pane-dim: var(--helios-dim); --pane-bg: var(--helios-bg); }
 .pane--fafnir { background: var(--fafnir-bg); color: var(--fafnir-ink); --pane-accent: var(--fafnir-accent); --pane-dim: var(--fafnir-dim); --pane-bg: var(--fafnir-bg); }
 .pane--argo   { background: var(--argo-bg);   color: var(--argo-ink);   --pane-accent: var(--argo-accent);   --pane-dim: var(--argo-dim);   --pane-bg: var(--argo-bg); }
+.pane--sugar  { background: var(--sugar-bg);  color: var(--sugar-ink);  --pane-accent: var(--sugar-accent);  --pane-dim: var(--sugar-dim);  --pane-bg: var(--sugar-bg); }
 
 .pane:hover { border-color: var(--pane-accent); }
 
@@ -320,14 +334,16 @@ a { color: var(--accent); }
 
 html:has(#r-helios:checked) .pane--helios,
 html:has(#r-fafnir:checked) .pane--fafnir,
-html:has(#r-argo:checked)   .pane--argo {
+html:has(#r-argo:checked)   .pane--argo,
+html:has(#r-sugar:checked)  .pane--sugar {
   flex-grow: 2.6;
   border-color: var(--pane-accent);
 }
 
 html:has(#r-helios:checked) .pane--helios .pane__detail,
 html:has(#r-fafnir:checked) .pane--fafnir .pane__detail,
-html:has(#r-argo:checked)   .pane--argo   .pane__detail {
+html:has(#r-argo:checked)   .pane--argo   .pane__detail,
+html:has(#r-sugar:checked)  .pane--sugar  .pane__detail {
   max-height: 32rem;
   opacity: 1;
   visibility: visible;
@@ -344,7 +360,8 @@ html:has(#r-argo:checked)   .pane--argo   .pane__detail {
 
 html:has(#r-helios:checked) .pane--helios .pane__logo,
 html:has(#r-fafnir:checked) .pane--fafnir .pane__logo,
-html:has(#r-argo:checked)   .pane--argo   .pane__logo {
+html:has(#r-argo:checked)   .pane--argo   .pane__logo,
+html:has(#r-sugar:checked)  .pane--sugar  .pane__logo {
   animation: logo-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
@@ -356,7 +373,8 @@ html:has(#r-argo:checked)   .pane--argo   .pane__logo {
 
 html:has(#r-helios:checked) .pane--helios .pane__detail > *,
 html:has(#r-fafnir:checked) .pane--fafnir .pane__detail > *,
-html:has(#r-argo:checked)   .pane--argo   .pane__detail > * {
+html:has(#r-argo:checked)   .pane--argo   .pane__detail > *,
+html:has(#r-sugar:checked)  .pane--sugar  .pane__detail > * {
   animation: rise-in 0.45s ease both;
 }
 
@@ -368,7 +386,8 @@ html:has(input.app-radio:checked) .pane .pane__detail > :nth-child(4) { animatio
 /* Focus clavier : anneau sur le panneau correspondant */
 html:has(#r-helios:focus-visible) .pane--helios,
 html:has(#r-fafnir:focus-visible) .pane--fafnir,
-html:has(#r-argo:focus-visible)   .pane--argo {
+html:has(#r-argo:focus-visible)   .pane--argo,
+html:has(#r-sugar:focus-visible)  .pane--sugar {
   outline: 2px solid var(--pane-accent);
   outline-offset: 3px;
 }
