@@ -3,15 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thoth Technologies · Applications mobiles</title>
-  <meta name="description" content="Thoth Technologies conçoit des applications simples et soignées : Helios (permis de conduire), Sugar (nutrition), Fafnir (budget personnel) et Argo (covoiturage).">
-  <meta property="og:title" content="Thoth Technologies">
+  <title>Thoth Technologies · Applications mobiles et web</title>
+  <meta name="description" content="Thoth Technologies conçoit des applications simples et soignées : Helios (questions orales du permis de conduire), Sugar (sucres et nutrition des aliments), Fafnir (budget personnel) et Argo (covoiturage).">
+  <link rel="canonical" href="https://thoth.fr/">
+  <meta name="theme-color" content="#14161d">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Thoth Technologies">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://thoth.fr/">
+  <meta property="og:title" content="Thoth Technologies · Applications mobiles et web">
   <meta property="og:description" content="Des mythes, mis en application. Helios, Sugar, Fafnir, Argo.">
-  <meta property="og:image" content="assets/thoth_technologies.png">
+  <meta property="og:image" content="https://thoth.fr/assets/thoth_technologies.png">
+  <meta property="og:image:width" content="500">
+  <meta property="og:image:height" content="500">
+  <meta property="og:image:alt" content="Logo de Thoth Technologies">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Thoth Technologies · Applications mobiles et web">
+  <meta name="twitter:description" content="Des mythes, mis en application. Helios, Sugar, Fafnir, Argo.">
+  <meta name="twitter:image" content="https://thoth.fr/assets/thoth_technologies.png">
+
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="preload" href="assets/fonts/marcellus-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/alegreya-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://thoth.fr/#organization",
+        "name": "Thoth Technologies",
+        "alternateName": "Thoth",
+        "url": "https://thoth.fr/",
+        "logo": "https://thoth.fr/assets/thoth_technologies.png",
+        "email": "contact@thoth.fr",
+        "foundingDate": "2025-05-27",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "3 Terrasse Le Nôtre",
+          "postalCode": "94220",
+          "addressLocality": "Charenton-le-Pont",
+          "addressCountry": "FR"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://thoth.fr/#website",
+        "url": "https://thoth.fr/",
+        "name": "Thoth Technologies",
+        "inLanguage": "fr",
+        "publisher": { "@id": "https://thoth.fr/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Helios",
+        "url": "https://helios.thoth.fr",
+        "image": "https://thoth.fr/assets/helios.png",
+        "description": "Entraînement aux questions orales de l'examen pratique du permis de conduire : vérifications, sécurité routière et premiers secours. 200 questions, corrections détaillées, suivi de progression. Gratuit, sans inscription, hors-ligne.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Android, iOS, Web",
+        "inLanguage": "fr",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "installUrl": [
+          "https://play.google.com/store/apps/details?id=fr.thoth.helios",
+          "https://apps.apple.com/fr/app/helios-driver/id6763942406"
+        ],
+        "author": { "@id": "https://thoth.fr/#organization" }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Sugar",
+        "url": "https://sugar.thoth.fr",
+        "image": "https://thoth.fr/assets/sugar.png",
+        "description": "Plus de 100 aliments classés par glucose, fructose, lactose, maltose, macronutriments, fibres, calories et index glycémique, d'après les tables CIQUAL (ANSES) et USDA. Gratuit, sans inscription.",
+        "applicationCategory": "HealthApplication",
+        "inLanguage": "fr",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "author": { "@id": "https://thoth.fr/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -46,8 +124,8 @@
 
         <article class="pane pane--helios">
           <label class="pane__hit" for="r-helios">
-            <img class="pane__logo" src="assets/helios.png" alt="" width="120" height="120">
-            <span class="pane__name">Helios</span>
+            <img class="pane__logo" src="assets/helios.png" alt="Logo Helios" width="120" height="120">
+            <h2 class="pane__name">Helios</h2>
             <span class="pane__badge pane__badge--live">Disponible</span>
           </label>
           <div class="pane__detail">
@@ -61,17 +139,17 @@
               Gratuit, sans inscription, fonctionne hors-ligne.
             </p>
             <div class="pane__actions">
-              <a class="btn btn--primary" href="https://helios.thoth.fr">Ouvrir Helios</a>
-              <a class="btn" href="https://play.google.com/store/apps/details?id=fr.thoth.helios">Google Play</a>
-              <a class="btn" href="https://apps.apple.com/fr/app/helios-driver/id6763942406">App Store</a>
+              <a class="btn btn--primary" href="https://helios.thoth.fr" rel="noopener">Ouvrir Helios</a>
+              <a class="btn" href="https://play.google.com/store/apps/details?id=fr.thoth.helios" rel="noopener">Google Play</a>
+              <a class="btn" href="https://apps.apple.com/fr/app/helios-driver/id6763942406" rel="noopener">App Store</a>
             </div>
           </div>
         </article>
 
         <article class="pane pane--sugar">
           <label class="pane__hit" for="r-sugar">
-            <img class="pane__logo" src="assets/sugar.png" alt="" width="120" height="120">
-            <span class="pane__name">Sugar</span>
+            <img class="pane__logo" src="assets/sugar.png" alt="Logo Sugar" width="120" height="120">
+            <h2 class="pane__name">Sugar</h2>
             <span class="pane__badge pane__badge--live">Disponible</span>
           </label>
           <div class="pane__detail">
@@ -84,15 +162,15 @@
               tables CIQUAL (ANSES) et USDA. Un site web, gratuit, sans inscription.
             </p>
             <div class="pane__actions">
-              <a class="btn btn--primary" href="https://sugar.thoth.fr">Ouvrir Sugar</a>
+              <a class="btn btn--primary" href="https://sugar.thoth.fr" rel="noopener">Ouvrir Sugar</a>
             </div>
           </div>
         </article>
 
         <article class="pane pane--fafnir">
           <label class="pane__hit" for="r-fafnir">
-            <img class="pane__logo" src="assets/fafnir.png" alt="" width="120" height="120">
-            <span class="pane__name">Fafnir</span>
+            <img class="pane__logo" src="assets/fafnir.png" alt="Logo Fafnir" width="120" height="120">
+            <h2 class="pane__name">Fafnir</h2>
             <span class="pane__badge">Bientôt</span>
           </label>
           <div class="pane__detail">
@@ -110,8 +188,8 @@
 
         <article class="pane pane--argo">
           <label class="pane__hit" for="r-argo">
-            <img class="pane__logo" src="assets/argo.png" alt="" width="120" height="120">
-            <span class="pane__name">Argo</span>
+            <img class="pane__logo" src="assets/argo.png" alt="Logo Argo" width="120" height="120">
+            <h2 class="pane__name">Argo</h2>
             <span class="pane__badge">Bientôt</span>
           </label>
           <div class="pane__detail">
