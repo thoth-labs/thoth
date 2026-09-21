@@ -3,6 +3,43 @@
    Bascule de thème en CSS pur : radios + :has(), aucun JavaScript.
    ========================================================================== */
 
+/* ==========================================================================
+   Polices auto-hébergées (aucune requête vers Google Fonts, RGPD)
+   Sous-ensemble latin, licence SIL OFL : voir assets/fonts/OFL-*.txt
+   ========================================================================== */
+
+@font-face {
+  font-family: "Marcellus";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/marcellus-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/alegreya-sans-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/alegreya-sans-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/alegreya-sans-700.woff2") format("woff2");
+}
+
 :root {
   /* Thème par défaut : Thoth (anthracite, encre & papyrus) */
   --bg: #14161d;
@@ -130,6 +167,13 @@ a { color: var(--accent); }
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .brand__name {
@@ -409,6 +453,7 @@ html:has(#r-thoth:focus-visible) .brand {
 
 .site-footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
@@ -418,8 +463,127 @@ html:has(#r-thoth:focus-visible) .brand {
   font-size: 0.95rem;
 }
 
+.site-footer p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 0.75rem;
+  text-align: center;
+}
+
 .site-footer a { color: var(--ink-dim); }
 .site-footer a:hover { color: var(--accent); }
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.site-footer__nav a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 0.1rem; }
+
+/* ==========================================================================
+   Page Entreprise : présentation, mentions légales, confidentialité
+   ========================================================================== */
+
+.prose {
+  max-width: 44rem;
+  margin: 0 auto 3.5rem;
+}
+
+.prose__section {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 1.5rem;
+}
+
+.prose__section:first-child { border-top: 0; padding-top: 0.5rem; }
+
+.prose h2 {
+  margin: 0 0 1.25rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.02em;
+}
+
+.prose h3 {
+  margin: 1.75rem 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.prose p { margin: 0 0 1rem; }
+
+.prose p:last-child { margin-bottom: 0; }
+
+.prose ul {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.prose li + li { margin-top: 0.35rem; }
+
+.prose a { text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+
+.prose .lede {
+  font-size: 1.15rem;
+  color: var(--ink-dim);
+}
+
+/* Liste de faits : libellé en petites capitales, valeur en regard */
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.6rem 1.5rem;
+  margin: 1.5rem 0 0;
+}
+
+.facts dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  padding-top: 0.2rem;
+}
+
+.facts dd { margin: 0; }
+
+/* Sommaire de la page */
+.prose__toc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prose__toc a {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.prose__toc a:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ==========================================================================
    Mobile : panneaux empilés en accordéon
@@ -444,6 +608,10 @@ html:has(#r-thoth:focus-visible) .brand {
   .pane__logo { width: 64px; }
 
   .pane__name { flex: 1; font-size: 1.3rem; }
+
+  .facts { grid-template-columns: 1fr; gap: 0.15rem 0; }
+
+  .facts dd + dt { margin-top: 0.75rem; }
 }
 
 /* ==========================================================================
